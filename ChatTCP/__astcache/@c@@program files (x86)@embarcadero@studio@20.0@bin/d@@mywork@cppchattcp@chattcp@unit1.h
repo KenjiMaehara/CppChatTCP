@@ -13,20 +13,22 @@
 #include <IdTCPClient.hpp>
 #include <IdTCPConnection.hpp>
 #include <IdTCPServer.hpp>
+#include <IdContext.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
-__published:	// IDE ‚ÅŠÇ—‚³‚ê‚éƒRƒ“ƒ|[ƒlƒ“ƒg
+__published:	// IDE ã§ç®¡ç†ã•ã‚Œã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 	TLabel *Label1;
 	TEdit *EHost;
-	TListBox *ListBox1;
-	TEdit *Edit2;
+	TListBox *LMessage;
+	TEdit *EMassage;
 	TButton *ESend;
 	TIdTCPClient *ChatClient;
 	TIdTCPServer *ChatServer;
 	void __fastcall ESendClick(TObject *Sender);
-private:	// ƒ†[ƒU[éŒ¾
-public:		// ƒ†[ƒU[éŒ¾
+	void __fastcall ChatServerExcute(TIdContext *AContext);
+private:	// ãƒ¦ãƒ¼ã‚¶ãƒ¼å®£è¨€
+public:		// ãƒ¦ãƒ¼ã‚¶ãƒ¼å®£è¨€
 	__fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

@@ -24,7 +24,7 @@ void __fastcall TForm1::ESendClick(TObject *Sender)
 
 	ChatClient->Socket->Write(EMassage->Text.Length());
 	ChatClient->Socket->Write(EMassage->Text);
-	ChatClient->Disconnect();
+	//ChatClient->Disconnect();
 
 
 
