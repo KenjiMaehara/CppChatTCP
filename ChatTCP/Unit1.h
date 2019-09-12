@@ -13,17 +13,20 @@
 #include <IdTCPClient.hpp>
 #include <IdTCPConnection.hpp>
 #include <IdTCPServer.hpp>
+#include <IdContext.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
 __published:	// IDE で管理されるコンポーネント
-	TIdTCPClient *ChatClient;
-	TIdTCPServer *ChatServer;
 	TLabel *Label1;
 	TEdit *EHost;
-	TListBox *ListBox1;
-	TEdit *Edit2;
-	TButton *Button1;
+	TListBox *LMessage;
+	TEdit *EMassage;
+	TButton *ESend;
+	TIdTCPClient *ChatClient;
+	TIdTCPServer *ChatServer;
+	void __fastcall ESendClick(TObject *Sender);
+	void __fastcall ChatServerExcute(TIdContext *AContext);
 private:	// ユーザー宣言
 public:		// ユーザー宣言
 	__fastcall TForm1(TComponent* Owner);

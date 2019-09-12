@@ -12,10 +12,31 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
+
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button1Click(TObject *Sender)
+
+void __fastcall TForm1::ESendClick(TObject *Sender)
 {
+
+	ChatClient->Host = EHost->Text;
+	ChatClient->Connect();
+
+	ChatClient->Socket->Write(EMassage->Text.Length());
+	ChatClient->Socket->Write(EMassage->Text);
+	ChatClient->Disconnect();
+
+
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
+{
+	int length = AContext->Connection->Socket->ReadLongInt();
+	UnicodeString Message = AContext->Connection->Socket->ReadString(length);
+	AContext->Connection->Disconnect();
+	LMessage->Items->Add(Message);
 
 }
 //---------------------------------------------------------------------------

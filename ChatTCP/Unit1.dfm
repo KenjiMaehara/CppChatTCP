@@ -28,7 +28,7 @@ object Form1: TForm1
     TabOrder = 0
     Text = '127.0.0.1'
   end
-  object ListBox1: TListBox
+  object LMessage: TListBox
     Left = 24
     Top = 80
     Width = 585
@@ -36,38 +36,36 @@ object Form1: TForm1
     ItemHeight = 13
     TabOrder = 1
   end
-  object Edit2: TEdit
+  object EMassage: TEdit
     Left = 24
     Top = 255
     Width = 497
     Height = 21
     TabOrder = 2
-    Text = 'Edit2'
   end
-  object Button1: TButton
+  object ESend: TButton
     Left = 534
     Top = 255
     Width = 75
     Height = 25
     Caption = 'Send'
     TabOrder = 3
+    OnClick = ESendClick
   end
   object ChatClient: TIdTCPClient
     ConnectTimeout = 0
     IPVersion = Id_IPv4
     Port = 12000
     ReadTimeout = -1
-    Left = 384
-    Top = 32
+    Left = 408
+    Top = 24
   end
   object ChatServer: TIdTCPServer
-    Bindings = <
-      item
-        IP = '0.0.0.0'
-        Port = 12000
-      end>
+    Active = True
+    Bindings = <>
     DefaultPort = 12000
-    Left = 456
+    OnExecute = ChatServerExcute
+    Left = 496
     Top = 32
   end
 end
