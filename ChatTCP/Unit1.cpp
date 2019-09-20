@@ -55,7 +55,7 @@ void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
 	}
 
 
-	//ChatServer->Contexts->UnlockList();
+	ChatServer->Contexts->UnlockList();
 
 }
 //---------------------------------------------------------------------------

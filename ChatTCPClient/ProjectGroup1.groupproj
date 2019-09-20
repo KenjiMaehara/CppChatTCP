@@ -1,0 +1,39 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7E826FD9-E4AE-4DA9-8F72-1C807F50660F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ChatTCP.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\ChatTCP\ChatTCP.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ChatTCP">
+        <MSBuild Projects="..\ChatTCP\ChatTCP.cbproj"/>
+    </Target>
+    <Target Name="ChatTCP:Clean">
+        <MSBuild Projects="..\ChatTCP\ChatTCP.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ChatTCP:Make">
+        <MSBuild Projects="..\ChatTCP\ChatTCP.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ChatTCP;ChatTCP"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ChatTCP:Clean;ChatTCP:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ChatTCP:Make;ChatTCP:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
