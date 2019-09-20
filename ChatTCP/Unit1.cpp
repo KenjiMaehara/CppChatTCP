@@ -33,10 +33,29 @@ void __fastcall TForm1::ESendClick(TObject *Sender)
 
 void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
 {
-	int length = AContext->Connection->Socket->ReadLongInt();
-	UnicodeString Message = AContext->Connection->Socket->ReadString(length);
-	AContext->Connection->Disconnect();
-	LMessage->Items->Add(Message);
+	//int length = AContext->Connection->Socket->ReadLongInt();
+	//UnicodeString Message = AContext->Connection->Socket->ReadString(length);
+	//AContext->Connection->Disconnect();
+	//LMessage->Items->Add(Message);
+
+	AnsiString rcvdStr;
+
+	//
+	rcvdStr = AContext->Connection->IOHandler->ReadLn(IndyTextEncoding(932));
+
+	TList *threads;
+	TIdContext *ac;
+
+	threads = ChatServer->Contexts->LockList();
+
+	for(int idx=0; idx < threads->Count; idx++){
+		ac = reinterpret_cast<TIdContext *>(threads->Items[idx]);
+		ac->Connection->IOHandler->WriteLn(rcvdStr);
+
+	}
+
+
+	//ChatServer->Contexts->UnlockList();
 
 }
 //---------------------------------------------------------------------------
