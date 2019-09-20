@@ -52,6 +52,10 @@ void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
 		ac = reinterpret_cast<TIdContext *>(threads->Items[idx]);
 		ac->Connection->IOHandler->WriteLn(rcvdStr);
 
+		int length = ac->Connection->Socket->ReadLongInt();
+		UnicodeString Message = ac->Connection->Socket->ReadString(length);
+		LMessage->Items->Add(Message);
+
 	}
 
 
@@ -59,4 +63,5 @@ void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
 
 }
 //---------------------------------------------------------------------------
+
 
