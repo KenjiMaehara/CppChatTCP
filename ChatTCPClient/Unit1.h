@@ -25,7 +25,7 @@ __published:	// IDE で管理されるコンポーネント
 	TButton *ESend;
 	TIdTCPClient *ChatClient;
 	void __fastcall ESendClick(TObject *Sender);
-	void __fastcall ChatServerExcute(TIdContext *AContext);
+	//void __fastcall ChatServerExcute(TIdContext *AContext);
 private:	// ユーザー宣言
 public:		// ユーザー宣言
 	__fastcall TForm1(TComponent* Owner);

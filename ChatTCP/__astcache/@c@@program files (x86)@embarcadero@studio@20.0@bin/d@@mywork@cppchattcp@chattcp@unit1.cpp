@@ -64,9 +64,4 @@ void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::LMessageClick(TObject *Sender)
-{
-
-}
-//---------------------------------------------------------------------------
 

@@ -21,23 +21,15 @@ void __fastcall TForm1::ESendClick(TObject *Sender)
 {
 
 
-
+	ChatClient->Host = EHost->Text;
+	ChatClient->Connect();
 	ChatClient->Socket->Write(EMassage->Text.Length());
 	ChatClient->Socket->Write(EMassage->Text);
-	//ChatClient->Disconnect();
+	ChatClient->Disconnect();
 
 
 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
-{
-	int length = AContext->Connection->Socket->ReadLongInt();
-	UnicodeString Message = AContext->Connection->Socket->ReadString(length);
-	AContext->Connection->Disconnect();
-	LMessage->Items->Add(Message);
-
-}
-//---------------------------------------------------------------------------
 
