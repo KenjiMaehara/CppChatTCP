@@ -22,7 +22,7 @@ void __fastcall TForm1::ESendClick(TObject *Sender)
 
 
 	ChatClient->Host = EHost->Text;
-	/ChatClient->Connect();
+	ChatClient->Connect();
 	ChatClient->Socket->Write(EMassage->Text.Length());
 	ChatClient->Socket->Write(EMassage->Text);
 	ChatClient->Disconnect();
