@@ -41,7 +41,7 @@ void __fastcall TTCPServer::ChatServerExcute(TIdContext *AContext)
 	AnsiString rcvdStr;
 
 	//
-	rcvdStr = L"";
+	//rcvdStr = L"";
 	rcvdStr = AContext->Connection->IOHandler->ReadLn(IndyTextEncoding(932));
 
 	TList *threads;
@@ -53,20 +53,21 @@ void __fastcall TTCPServer::ChatServerExcute(TIdContext *AContext)
 	msg = L"source IP:" + AContext->Connection->Socket->Binding->PeerIP;
 	LMessage->Items->Add(msg);
     msg = L"\r\nsource port:" + IntToStr(AContext->Connection->Socket->Binding->PeerPort);
-    LMessage->Items->Add(msg);
+	LMessage->Items->Add(msg);
+	LMessage->Items->Add(rcvdStr);  // 受信済の[rcvdStr]を使用
 
-    threads = ChatServer->Contexts->LockList();
+	threads = ChatServer->Contexts->LockList();
 
-    for(int idx=0; idx < threads->Count; idx++){
-        ac = reinterpret_cast<TIdContext *>(threads->Items[idx]);
+	for(int idx=0; idx < threads->Count; idx++){
+		ac = reinterpret_cast<TIdContext *>(threads->Items[idx]);
         ac->Connection->IOHandler->WriteLn(rcvdStr);
 
         // 受信文字列はすでにrcvdStrにて取得しているため、下記の受信処理は過剰で処理が止まります
         //int length = ac->Connection->Socket->ReadLongInt();
         //UnicodeString Message = ac->Connection->Socket->ReadString(length);
         //LMessage->Items->Add(Message);
-        LMessage->Items->Add(rcvdStr);  // 受信済の[rcvdStr]を使用
-    }
+		//LMessage->Items->Add(rcvdStr);  // 受信済の[rcvdStr]を使用
+	}
 
 	ChatServer->Contexts->UnlockList();
 
