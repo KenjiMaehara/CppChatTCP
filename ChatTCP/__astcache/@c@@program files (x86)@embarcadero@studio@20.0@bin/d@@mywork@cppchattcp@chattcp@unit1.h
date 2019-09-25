@@ -15,9 +15,9 @@
 #include <IdTCPServer.hpp>
 #include <IdContext.hpp>
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TTCPServer : public TForm
 {
-__published:	// IDE ‚ÅŠÇ—‚³‚ê‚éƒRƒ“ƒ|[ƒlƒ“ƒg
+__published:	// IDE ã§ç®¡ç†ã•ã‚Œã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 	TLabel *Label1;
 	TEdit *EHost;
 	TListBox *LMessage;
@@ -27,11 +27,11 @@ __published:	// IDE ‚ÅŠÇ—‚³‚ê‚éƒRƒ“ƒ|[ƒlƒ“ƒg
 	TIdTCPServer *ChatServer;
 	void __fastcall ESendClick(TObject *Sender);
 	void __fastcall ChatServerExcute(TIdContext *AContext);
-private:	// ƒ†[ƒU[éŒ¾
-public:		// ƒ†[ƒU[éŒ¾
-	__fastcall TForm1(TComponent* Owner);
+private:	// ãƒ¦ãƒ¼ã‚¶ãƒ¼å®£è¨€
+public:		// ãƒ¦ãƒ¼ã‚¶ãƒ¼å®£è¨€
+	__fastcall TTCPServer(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TTCPServer *TCPServer;
 //---------------------------------------------------------------------------
 #endif
