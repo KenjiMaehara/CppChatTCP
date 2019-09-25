@@ -41,6 +41,7 @@ void __fastcall TTCPServer::ChatServerExcute(TIdContext *AContext)
 	AnsiString rcvdStr;
 
 	//
+	rcvdStr = L"";
 	rcvdStr = AContext->Connection->IOHandler->ReadLn(IndyTextEncoding(932));
 
 	TList *threads;
