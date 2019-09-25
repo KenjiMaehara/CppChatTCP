@@ -1,7 +1,7 @@
-object Form1: TForm1
+object TCP_Client: TTCP_Client
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'TCP_Client'
   ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace

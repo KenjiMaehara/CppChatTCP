@@ -15,7 +15,7 @@
 #include <IdTCPServer.hpp>
 #include <IdContext.hpp>
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TTCPServer : public TForm
 {
 __published:	// IDE で管理されるコンポーネント
 	TLabel *Label1;
@@ -29,9 +29,9 @@ __published:	// IDE で管理されるコンポーネント
 	void __fastcall ChatServerExcute(TIdContext *AContext);
 private:	// ユーザー宣言
 public:		// ユーザー宣言
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TTCPServer(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TTCPServer *TCPServer;
 //---------------------------------------------------------------------------
 #endif

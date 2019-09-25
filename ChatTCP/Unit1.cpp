@@ -7,16 +7,16 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TTCPServer *TCPServer;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TTCPServer::TTCPServer(TComponent* Owner)
 	: TForm(Owner)
 {
 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::ESendClick(TObject *Sender)
+void __fastcall TTCPServer::ESendClick(TObject *Sender)
 {
 
 	ChatClient->Host = EHost->Text;
@@ -31,7 +31,7 @@ void __fastcall TForm1::ESendClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
+void __fastcall TTCPServer::ChatServerExcute(TIdContext *AContext)
 {
 	//int length = AContext->Connection->Socket->ReadLongInt();
 	//UnicodeString Message = AContext->Connection->Socket->ReadString(length);
@@ -46,18 +46,26 @@ void __fastcall TForm1::ChatServerExcute(TIdContext *AContext)
 	TList *threads;
 	TIdContext *ac;
 
-	threads = ChatServer->Contexts->LockList();
 
-	for(int idx=0; idx < threads->Count; idx++){
-		ac = reinterpret_cast<TIdContext *>(threads->Items[idx]);
-		ac->Connection->IOHandler->WriteLn(rcvdStr);
+	// 受信元情報の表示
+	String msg;
+	msg = L"source IP:" + AContext->Connection->Socket->Binding->PeerIP;
+	LMessage->Items->Add(msg);
+    msg = L"\r\nsource port:" + IntToStr(AContext->Connection->Socket->Binding->PeerPort);
+    LMessage->Items->Add(msg);
 
-		int length = ac->Connection->Socket->ReadLongInt();
-		UnicodeString Message = ac->Connection->Socket->ReadString(length);
-		LMessage->Items->Add(Message);
+    threads = ChatServer->Contexts->LockList();
 
-	}
+    for(int idx=0; idx < threads->Count; idx++){
+        ac = reinterpret_cast<TIdContext *>(threads->Items[idx]);
+        ac->Connection->IOHandler->WriteLn(rcvdStr);
 
+        // 受信文字列はすでにrcvdStrにて取得しているため、下記の受信処理は過剰で処理が止まります
+        //int length = ac->Connection->Socket->ReadLongInt();
+        //UnicodeString Message = ac->Connection->Socket->ReadString(length);
+        //LMessage->Items->Add(Message);
+        LMessage->Items->Add(rcvdStr);  // 受信済の[rcvdStr]を使用
+    }
 
 	ChatServer->Contexts->UnlockList();
 
