@@ -57,9 +57,6 @@ object TCP_Server: TTCP_Server
     Top = 72
     Width = 673
     Height = 297
-    ColCount = 10
-    RowCount = 1
-    FixedRows = 0
     TabOrder = 4
   end
   object ChatClient: TIdTCPClient

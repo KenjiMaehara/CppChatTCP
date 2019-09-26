@@ -14,13 +14,6 @@ __fastcall TTCP_Server::TTCP_Server(TComponent* Owner)
 {
 
 	ChatServer->Active = False;
-	StringGrid1->Cells[0][0]="No";
-	StringGrid1->Cells[1][0]="端末名称";
-	StringGrid1->Cells[2][0]="端末アドレス";
-	StringGrid1->Cells[3][0]="MAC";
-	StringGrid1->Cells[4][0]="IPアドレス";
-	StringGrid1->Cells[5][0]="接続元ポート番号";
-
 }
 //---------------------------------------------------------------------------
 
@@ -82,17 +75,6 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 		if (AContext->Connection->Socket->Binding->PeerPort == ac->Connection->Socket->Binding->PeerPort) {
 			ac->Connection->IOHandler->WriteLn(rcvdStr);
 			LMessage->Items->Add(threads->Count);
-
-
-			for (int i = 0; i < StringGrid1->RowCount; i++) {
-				if (AContext->Connection->Socket->Binding->PeerPort =! StrToInt(StringGrid1->Cells[5][i])) {
-					StringGrid1->RowCount += 1;
-					StringGrid1->Cells[5][StringGrid1->RowCount] = AContext->Connection->Socket->Binding->PeerPort;
-				}
-
-			}
-
-
 		}
 
 		//ac->Connection->IOHandler->WriteLn(rcvdStr);
@@ -108,7 +90,6 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 
 }
 //---------------------------------------------------------------------------
-
 
 
 
