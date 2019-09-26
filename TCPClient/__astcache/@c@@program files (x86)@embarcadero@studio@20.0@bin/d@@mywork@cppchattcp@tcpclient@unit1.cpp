@@ -15,6 +15,7 @@ __fastcall TTCP_Client::TTCP_Client(TComponent* Owner)
 	//ChatClient->Host = EHost->Text;
 	//ChatClient->Port = 5000;
 	//ChatClient->Connect();
+	ESend->Enabled = false;
 }
 //---------------------------------------------------------------------------
 
@@ -65,7 +66,9 @@ void __fastcall TTCP_Client::EConnectClick(TObject *Sender)
 	buffer02 = ChatClient->IOHandler->ReadLn(IndyTextEncoding(932));
 
 	if (buffer == buffer02) {
-		EConnect->Enabled = fa;
+		EConnect->Enabled = false;
+		ESend->Enabled = true;
+		EConnect->Caption = "接続中";
 	}
 
 

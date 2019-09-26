@@ -72,7 +72,7 @@ object TCP_Client: TTCP_Client
     Top = 24
     Width = 75
     Height = 25
-    Caption = #25509#32154#38283#22987
+    Caption = 'EConnect'
     TabOrder = 5
     OnClick = EConnectClick
   end
