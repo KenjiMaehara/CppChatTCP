@@ -13,17 +13,21 @@ __fastcall TTCP_Server::TTCP_Server(TComponent* Owner)
 	: TForm(Owner)
 {
 
+	ChatServer->Active = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TTCP_Server::ESendClick(TObject *Sender)
 {
 
-	ChatClient->Host = EHost->Text;
-	ChatClient->Connect();
+	//ChatClient->Host = EHost->Text;
+	//ChatClient->Connect();
+	ChatServer->DefaultPort = StrToInt(EPort->Text);
+	TCP_Server->Caption = "TCP_Serve（接続中）";
+	ChatServer->Active = true;
 
-	ChatClient->Socket->Write(EMassage->Text.Length());
-	ChatClient->Socket->Write(EMassage->Text);
+	//ChatClient->Socket->Write(EMassage->Text.Length());
+	//ChatClient->Socket->Write(EMassage->Text);
 	//ChatClient->Disconnect();
 
 
@@ -81,5 +85,6 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 
 }
 //---------------------------------------------------------------------------
+
 
 

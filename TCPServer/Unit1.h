@@ -18,13 +18,13 @@
 class TTCP_Server : public TForm
 {
 __published:	// IDE で管理されるコンポーネント
-	TLabel *Label1;
-	TEdit *EHost;
 	TListBox *LMessage;
 	TEdit *EMassage;
 	TButton *ESend;
 	TIdTCPClient *ChatClient;
 	TIdTCPServer *ChatServer;
+	TEdit *EPort;
+	TLabel *Port;
 	void __fastcall ESendClick(TObject *Sender);
 	void __fastcall ChatServerExcute(TIdContext *AContext);
 private:	// ユーザー宣言

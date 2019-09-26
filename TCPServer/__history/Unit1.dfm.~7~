@@ -13,12 +13,20 @@ object TCP_Server: TTCP_Server
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Port: TLabel
+  object Label1: TLabel
     Left = 24
     Top = 8
-    Width = 20
+    Width = 22
     Height = 13
-    Caption = 'Port'
+    Caption = 'Host'
+  end
+  object EHost: TEdit
+    Left = 24
+    Top = 27
+    Width = 329
+    Height = 21
+    TabOrder = 0
+    Text = '127.0.0.1'
   end
   object LMessage: TListBox
     Left = 24
@@ -26,38 +34,30 @@ object TCP_Server: TTCP_Server
     Width = 585
     Height = 169
     ItemHeight = 13
-    TabOrder = 0
+    TabOrder = 1
   end
   object EMassage: TEdit
     Left = 24
     Top = 255
     Width = 497
     Height = 21
-    TabOrder = 1
+    TabOrder = 2
   end
   object ESend: TButton
     Left = 534
     Top = 255
     Width = 75
     Height = 25
-    Caption = #25509#32154
-    TabOrder = 2
-    OnClick = ESendClick
-  end
-  object EPort: TEdit
-    Left = 24
-    Top = 27
-    Width = 73
-    Height = 21
+    Caption = 'Send'
     TabOrder = 3
-    Text = '5000'
+    OnClick = ESendClick
   end
   object ChatClient: TIdTCPClient
     ConnectTimeout = 0
     IPVersion = Id_IPv4
     Port = 12000
     ReadTimeout = -1
-    Left = 512
+    Left = 408
     Top = 24
   end
   object ChatServer: TIdTCPServer
@@ -65,7 +65,7 @@ object TCP_Server: TTCP_Server
     Bindings = <>
     DefaultPort = 12000
     OnExecute = ChatServerExcute
-    Left = 576
-    Top = 24
+    Left = 496
+    Top = 32
   end
 end
