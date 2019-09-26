@@ -14,6 +14,7 @@
 #include <IdTCPConnection.hpp>
 #include <IdTCPServer.hpp>
 #include <IdContext.hpp>
+#include <Vcl.Grids.hpp>
 //---------------------------------------------------------------------------
 class TTCP_Server : public TForm
 {
@@ -25,6 +26,7 @@ __published:	// IDE で管理されるコンポーネント
 	TIdTCPServer *ChatServer;
 	TEdit *EPort;
 	TLabel *Port;
+	TStringGrid *StringGrid1;
 	void __fastcall ESendClick(TObject *Sender);
 	void __fastcall ChatServerExcute(TIdContext *AContext);
 private:	// ユーザー宣言

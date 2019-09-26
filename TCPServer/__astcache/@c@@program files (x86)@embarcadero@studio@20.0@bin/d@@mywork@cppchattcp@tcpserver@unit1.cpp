@@ -19,16 +19,21 @@ __fastcall TTCP_Server::TTCP_Server(TComponent* Owner)
 
 void __fastcall TTCP_Server::ESendClick(TObject *Sender)
 {
+	if (ChatServer->Active == False) {
 
-	//ChatClient->Host = EHost->Text;
-	//ChatClient->Connect();
-	ChatServer->DefaultPort = StrToInt(EPort->Text);
-	TCP_Server->Caption = "TCP_Serve（接続中）";
-	ChatServer->Active = rue;
+		ChatServer->DefaultPort = StrToInt(EPort->Text);
+		TCP_Server->Caption = "TCP_Serve（接続中）";
+		ChatServer->Active = True;
+		ESend->Caption = "停止";
 
-	//ChatClient->Socket->Write(EMassage->Text.Length());
-	//ChatClient->Socket->Write(EMassage->Text);
-	//ChatClient->Disconnect();
+	} else {
+
+		ChatServer->Active = false;
+		TCP_Server->Caption = "TCP_Serve";
+		ESend->Caption = "開始";
+
+	}
+
 
 
 
