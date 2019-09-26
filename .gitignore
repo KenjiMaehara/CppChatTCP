@@ -8,3 +8,6 @@
 *.ils
 *.obj
 *.tds
+*.map
+*.pdi
+*.pch
