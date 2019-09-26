@@ -12,9 +12,9 @@ TTCP_Client *TCP_Client;
 __fastcall TTCP_Client::TTCP_Client(TComponent* Owner)
 	: TForm(Owner)
 {
-	ChatClient->Host = EHost->Text;
-	ChatClient->Port = 5000;
-	ChatClient->Connect();
+	//ChatClient->Host = EHost->Text;
+	//ChatClient->Port = 5000;
+	//ChatClient->Connect();
 }
 //---------------------------------------------------------------------------
 
@@ -48,8 +48,26 @@ void __fastcall TTCP_Client::ESendClick(TObject *Sender)
 
 
 
-void __fastcall TTCP_Client::ChatClientAfterBind(TObject *Sender)
+
+void __fastcall TTCP_Client::EConnectClick(TObject *Sender)
 {
+	ChatClient->Host = EHost->Text;
+	ChatClient->Port = 5000;
+	ChatClient->Connect();
+
+
+	AnsiString buffer;
+	buffer = "123456789";
+	//ChatClient->Socket->Write(IntToStr(buffer));
+	ChatClient->Socket->WriteLn(buffer);
+
+	AnsiString buffer02;
+	buffer02 = ChatClient->IOHandler->ReadLn(IndyTextEncoding(932));
+
+	if (buffer == buffer02) {
+		EConnect->Enabled = fa;
+	}
+
 
 }
 //---------------------------------------------------------------------------

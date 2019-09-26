@@ -51,7 +51,7 @@ object TCP_Client: TTCP_Client
     TabOrder = 2
   end
   object ESend: TButton
-    Left = 527
+    Left = 534
     Top = 255
     Width = 75
     Height = 25
@@ -66,15 +66,6 @@ object TCP_Client: TTCP_Client
     Height = 21
     TabOrder = 4
     Text = '5000'
-  end
-  object EConnect: TButton
-    Left = 272
-    Top = 24
-    Width = 75
-    Height = 25
-    Caption = 'EConnect'
-    TabOrder = 5
-    OnClick = EConnectClick
   end
   object ChatClient: TIdTCPClient
     ConnectTimeout = 0
