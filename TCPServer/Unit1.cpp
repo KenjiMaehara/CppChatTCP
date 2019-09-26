@@ -52,16 +52,21 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 	String msg;
 	msg = L"source IP:" + AContext->Connection->Socket->Binding->PeerIP;
 	LMessage->Items->Add(msg);
-    msg = L"\r\nsource port:" + IntToStr(AContext->Connection->Socket->Binding->PeerPort);
+	msg = L"\r\nsource port:" + IntToStr(AContext->Connection->Socket->Binding->PeerPort);
 	LMessage->Items->Add(msg);
 	LMessage->Items->Add(rcvdStr);  // 受信済の[rcvdStr]を使用
 
-	AContext->Connection->IOHandler->WriteLn(rcvdStr);
+	//AContext->Connection->IOHandler->WriteLn(rcvdStr);
 
 	threads = ChatServer->Contexts->LockList();
 
 	for(int idx=0; idx < threads->Count; idx++){
 		ac = reinterpret_cast<TIdContext *>(threads->Items[idx]);
+
+		if (AContext->Connection->Socket->Binding->PeerPort == ac->Connection->Socket->Binding->PeerPort) {
+			ac->Connection->IOHandler->WriteLn(rcvdStr);
+		}
+
 		//ac->Connection->IOHandler->WriteLn(rcvdStr);
 
 		// 受信文字列はすでにrcvdStrにて取得しているため、下記の受信処理は過剰で処理が止まります
