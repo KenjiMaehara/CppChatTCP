@@ -1,7 +1,7 @@
-object TCPServer: TTCPServer
+object TCP_Server: TTCP_Server
   Left = 0
   Top = 0
-  Caption = 'TCPServer'
+  Caption = 'TCP_Server'
   ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace

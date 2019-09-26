@@ -7,16 +7,16 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TTCPServer *TCPServer;
+TTCP_Server *TCP_Server;
 //---------------------------------------------------------------------------
-__fastcall TTCPServer::TTCPServer(TComponent* Owner)
+__fastcall TTCP_Server::TTCP_Server(TComponent* Owner)
 	: TForm(Owner)
 {
 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TTCPServer::ESendClick(TObject *Sender)
+void __fastcall TTCP_Server::ESendClick(TObject *Sender)
 {
 
 	ChatClient->Host = EHost->Text;
@@ -31,7 +31,7 @@ void __fastcall TTCPServer::ESendClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TTCPServer::ChatServerExcute(TIdContext *AContext)
+void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 {
 	//int length = AContext->Connection->Socket->ReadLongInt();
 	//UnicodeString Message = AContext->Connection->Socket->ReadString(length);
