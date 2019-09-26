@@ -65,9 +65,10 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 
 		if (AContext->Connection->Socket->Binding->PeerPort == ac->Connection->Socket->Binding->PeerPort) {
 			ac->Connection->IOHandler->WriteLn(rcvdStr);
+			LMessage->Items->Add(threads->Count);
 		}
 
-		ac->Connection->IOHandler->WriteLn(rcvdStr);
+		//ac->Connection->IOHandler->WriteLn(rcvdStr);
 
 		// 受信文字列はすでにrcvdStrにて取得しているため、下記の受信処理は過剰で処理が止まります
         //int length = ac->Connection->Socket->ReadLongInt();

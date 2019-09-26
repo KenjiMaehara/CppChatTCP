@@ -65,6 +65,7 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 
 		if (AContext->Connection->Socket->Binding->PeerPort == ac->Connection->Socket->Binding->PeerPort) {
 			ac->Connection->IOHandler->WriteLn(rcvdStr);
+			LMessage->Items->Add(threads->Count);
 		}
 
 		//ac->Connection->IOHandler->WriteLn(rcvdStr);
