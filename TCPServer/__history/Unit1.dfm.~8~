@@ -61,6 +61,7 @@ object TCP_Server: TTCP_Server
     Top = 24
   end
   object ChatServer: TIdTCPServer
+    Active = True
     Bindings = <>
     DefaultPort = 12000
     OnExecute = ChatServerExcute

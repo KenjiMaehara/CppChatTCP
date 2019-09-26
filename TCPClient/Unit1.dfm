@@ -20,10 +20,17 @@ object TCP_Client: TTCP_Client
     Height = 13
     Caption = 'Host'
   end
+  object Label2: TLabel
+    Left = 160
+    Top = 8
+    Width = 20
+    Height = 13
+    Caption = 'Port'
+  end
   object EHost: TEdit
     Left = 24
     Top = 27
-    Width = 329
+    Width = 113
     Height = 21
     TabOrder = 0
     Text = '127.0.0.1'
@@ -51,6 +58,14 @@ object TCP_Client: TTCP_Client
     Caption = 'Send'
     TabOrder = 3
     OnClick = ESendClick
+  end
+  object EPort: TEdit
+    Left = 160
+    Top = 27
+    Width = 57
+    Height = 21
+    TabOrder = 4
+    Text = '5000'
   end
   object ChatClient: TIdTCPClient
     ConnectTimeout = 0

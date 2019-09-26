@@ -13,7 +13,6 @@ __fastcall TTCP_Client::TTCP_Client(TComponent* Owner)
 	: TForm(Owner)
 {
 	ChatClient->Host = EHost->Text;
-	ChatClient->Port = 5000;
 	ChatClient->Connect();
 }
 //---------------------------------------------------------------------------
@@ -26,31 +25,24 @@ void __fastcall TTCP_Client::ESendClick(TObject *Sender)
 	//ChatClient->Connect();
 
     // ChatClient->Socket->Write(EMassage->Text.Length());
-	ChatClient->Socket->Write(IntToStr(EMassage->Text.Length()));  // IntToStr()ã‚’ç”¨ã„ã¦Stringå‹ã«ã™ã‚‹ã“ã¨
-																   // Stringå‹ã«ã—ãªã„ã¨æ–‡å­—åŒ–ã‘ã«ãªã£ã¦LMessageã«è¡¨ç¤ºã•ã‚Œã¾ã›ã‚“
+	ChatClient->Socket->Write(IntToStr(EMassage->Text.Length()));  // IntToStr()‚ğ—p‚¢‚ÄStringŒ^‚É‚·‚é‚±‚Æ
+																   // StringŒ^‚É‚µ‚È‚¢‚Æ•¶š‰»‚¯‚É‚È‚Á‚ÄLMessage‚É•\¦‚³‚ê‚Ü‚¹‚ñ
 	//ChatClient->Socket->Write(EMassage->Text);
-	ChatClient->Socket->WriteLn(EMassage->Text); // ChatServerExcute()ã§ã¯ReadLn()ã§Lnä»˜ãã§å—ä¿¡ã™ã‚‹ãŸã‚ã€é€ä¿¡å´ã‚‚WriteLn()ã‚’ä½¿ã†
+	ChatClient->Socket->WriteLn(EMassage->Text); // ChatServerExcute()‚Å‚ÍReadLn()‚ÅLn•t‚«‚ÅóM‚·‚é‚½‚ßA‘—M‘¤‚àWriteLn()‚ğg‚¤
 
 
 	AnsiString buffer;
 	buffer = ChatClient->IOHandler->ReadLn(IndyTextEncoding(932));
 	LMessage->Items->Add(buffer);
-        // WriteLn()ã§ãªã„ã¨ReadLn()ã§å‡¦ç†ãŒæ­¢ã¾ã£ã¦ã—ã¾ã†
+        // WriteLn()‚Å‚È‚¢‚ÆReadLn()‚Åˆ—‚ª~‚Ü‚Á‚Ä‚µ‚Ü‚¤
 
 	// ChatClient->Disconnect();
 
 	// Note:
-	// ChatClientã®Connect(), Disconnect()ã¯SendClickã‚¤ãƒ™ãƒ³ãƒˆã§å®Ÿæ–½ã™ã‚‹ã¨ã€å¿œç­”å—ä¿¡ã¾ã§Disconnect()ã§ãã¾ã›ã‚“ã€‚
-	// TCPé€šä¿¡ã®ã‚½ãƒ•ãƒˆã§ã¯ã€Œæ¥ç¶šã€ã€Œåˆ‡æ–­ã€ãƒœã‚¿ãƒ³ã‚’åˆ¥é€”ç”¨æ„ã—ã¦ã€Connect(), Disconnect()ã‚’ãã‚Œã‚‰ã®ãƒœã‚¿ãƒ³æŠ¼ä¸‹ã§å‡¦ç†ã™ã‚‹ä¾‹ã¯ã‚ã‚Šã¾ã™ã€‚
+	// ChatClient‚ÌConnect(), Disconnect()‚ÍSendClickƒCƒxƒ“ƒg‚ÅÀ{‚·‚é‚ÆA‰“šóM‚Ü‚ÅDisconnect()‚Å‚«‚Ü‚¹‚ñB
+	// TCP’ÊM‚Ìƒ\ƒtƒg‚Å‚ÍuÚ‘±vuØ’fvƒ{ƒ^ƒ“‚ğ•Ê“r—pˆÓ‚µ‚ÄAConnect(), Disconnect()‚ğ‚»‚ê‚ç‚Ìƒ{ƒ^ƒ“‰Ÿ‰º‚Åˆ—‚·‚é—á‚Í‚ ‚è‚Ü‚·B
 
 }
 //---------------------------------------------------------------------------
 
-
-
-void __fastcall TTCP_Client::ChatClientAfterBind(TObject *Sender)
-{
-
-}
-//---------------------------------------------------------------------------
 

@@ -13,6 +13,7 @@ __fastcall TTCP_Client::TTCP_Client(TComponent* Owner)
 	: TForm(Owner)
 {
 	ChatClient->Host = EHost->Text;
+	ChatClient->Port = 5000;
 	ChatClient->Connect();
 }
 //---------------------------------------------------------------------------
@@ -44,5 +45,7 @@ void __fastcall TTCP_Client::ESendClick(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
+
 
 

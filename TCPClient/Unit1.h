@@ -24,6 +24,8 @@ __published:	// IDE で管理されるコンポーネント
 	TEdit *EMassage;
 	TButton *ESend;
 	TIdTCPClient *ChatClient;
+	TEdit *EPort;
+	TLabel *Label2;
 	void __fastcall ESendClick(TObject *Sender);
 	//void __fastcall ChatServerExcute(TIdContext *AContext);
 private:	// ユーザー宣言
