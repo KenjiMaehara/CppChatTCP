@@ -2,3 +2,9 @@
 *.json
 *.json
 *.local
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.obj
+*.tds

@@ -56,13 +56,15 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 	LMessage->Items->Add(msg);
 	LMessage->Items->Add(rcvdStr);  // 受信済の[rcvdStr]を使用
 
+	AContext->Connection->IOHandler->WriteLn(rcvdStr);
+
 	threads = ChatServer->Contexts->LockList();
 
 	for(int idx=0; idx < threads->Count; idx++){
 		ac = reinterpret_cast<TIdContext *>(threads->Items[idx]);
-        ac->Connection->IOHandler->WriteLn(rcvdStr);
+		//ac->Connection->IOHandler->WriteLn(rcvdStr);
 
-        // 受信文字列はすでにrcvdStrにて取得しているため、下記の受信処理は過剰で処理が止まります
+		// 受信文字列はすでにrcvdStrにて取得しているため、下記の受信処理は過剰で処理が止まります
         //int length = ac->Connection->Socket->ReadLongInt();
         //UnicodeString Message = ac->Connection->Socket->ReadString(length);
         //LMessage->Items->Add(Message);
