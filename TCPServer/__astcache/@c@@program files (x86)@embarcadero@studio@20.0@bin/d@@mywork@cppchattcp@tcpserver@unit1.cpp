@@ -80,10 +80,18 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 
 
 			for (int i = 0; i < StringGrid1->RowCount; i++) {
-				if (IntToStr(AContext->Connection->Socket->Binding->PeerPort) != StringGrid1->Cells[5][i]) {
+
+				AnsiString test;
+				test = IntToStr(AContext->Connection->Socket->Binding->PeerPort);
+
+				if (test == StringGrid1->Cells[5][i]) {
+					break;
+				}
+
+
+				if (i==StringGrid1->RowCount-) {
 					StringGrid1->RowCount += 1;
 					StringGrid1->Cells[5][StringGrid1->RowCount] = AContext->Connection->Socket->Binding->PeerPort;
-                    break;
 				}
 
 			}
