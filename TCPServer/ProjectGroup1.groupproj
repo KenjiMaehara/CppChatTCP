@@ -1,12 +1,12 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{DECF7334-D890-47F4-8E4F-C0D47BF0D10A}</ProjectGuid>
+        <ProjectGuid>{7D0BE339-AB9A-4C6F-A5A0-AA4E5F32027B}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="ChatTCP.cbproj">
+        <Projects Include="TCPServer.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="..\ChatTCPClient\ChatTCP.cbproj">
+        <Projects Include="..\TCPClient\TCPClient.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,23 +17,32 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="ChatTCP">
-        <MSBuild Projects="..\ChatTCPClient\ChatTCP.cbproj"/>
+    <Target Name="TCPServer">
+        <MSBuild Projects="TCPServer.cbproj"/>
     </Target>
-    <Target Name="ChatTCP:Clean">
-        <MSBuild Projects="..\ChatTCPClient\ChatTCP.cbproj" Targets="Clean"/>
+    <Target Name="TCPServer:Clean">
+        <MSBuild Projects="TCPServer.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="ChatTCP:Make">
-        <MSBuild Projects="..\ChatTCPClient\ChatTCP.cbproj" Targets="Make"/>
+    <Target Name="TCPServer:Make">
+        <MSBuild Projects="TCPServer.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="TCPClient">
+        <MSBuild Projects="..\TCPClient\TCPClient.cbproj"/>
+    </Target>
+    <Target Name="TCPClient:Clean">
+        <MSBuild Projects="..\TCPClient\TCPClient.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TCPClient:Make">
+        <MSBuild Projects="..\TCPClient\TCPClient.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ChatTCP;ChatTCP"/>
+        <CallTarget Targets="TCPServer;TCPClient"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ChatTCP:Clean;ChatTCP:Clean"/>
+        <CallTarget Targets="TCPServer:Clean;TCPClient:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ChatTCP:Make;ChatTCP:Make"/>
+        <CallTarget Targets="TCPServer:Make;TCPClient:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

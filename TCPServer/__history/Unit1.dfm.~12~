@@ -58,7 +58,7 @@ object TCP_Server: TTCP_Server
     Width = 673
     Height = 297
     ColCount = 10
-    RowCount = 1
+    RowCount = 2
     FixedRows = 0
     TabOrder = 4
   end

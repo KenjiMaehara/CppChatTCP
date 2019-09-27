@@ -15,11 +15,11 @@ __fastcall TTCP_Server::TTCP_Server(TComponent* Owner)
 
 	ChatServer->Active = False;
 	StringGrid1->Cells[0][0]="No";
-	StringGrid1->Cells[1][0]="ç«¯æœ«åç§°";
-	StringGrid1->Cells[2][0]="ç«¯æœ«ã‚¢ãƒ‰ãƒ¬ã‚¹";
+	StringGrid1->Cells[1][0]="’[–––¼Ì";
+	StringGrid1->Cells[2][0]="’[––ƒAƒhƒŒƒX";
 	StringGrid1->Cells[3][0]="MAC";
-	StringGrid1->Cells[4][0]="IPã‚¢ãƒ‰ãƒ¬ã‚¹";
-	StringGrid1->Cells[5][0]="æŽ¥ç¶šå…ƒãƒãƒ¼ãƒˆç•ªå·";
+	StringGrid1->Cells[4][0]="IPƒAƒhƒŒƒX";
+	StringGrid1->Cells[5][0]="Ú‘±Œ³ƒ|[ƒg”Ô†";
 
 }
 //---------------------------------------------------------------------------
@@ -29,15 +29,15 @@ void __fastcall TTCP_Server::ESendClick(TObject *Sender)
 	if (ChatServer->Active == False) {
 
 		ChatServer->DefaultPort = StrToInt(EPort->Text);
-		TCP_Server->Caption = "TCP_Serveï¼ˆæŽ¥ç¶šä¸­ï¼‰";
+		TCP_Server->Caption = "TCP_ServeiÚ‘±’†j";
 		ChatServer->Active = True;
-		ESend->Caption = "åœæ­¢";
+		ESend->Caption = "’âŽ~";
 
 	} else {
 
 		ChatServer->Active = false;
 		TCP_Server->Caption = "TCP_Serve";
-		ESend->Caption = "é–‹å§‹";
+		ESend->Caption = "ŠJŽn";
 
 	}
 
@@ -60,13 +60,13 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 	TIdContext *ac;
 
 
-	// å—ä¿¡å…ƒæƒ…å ±ã®è¡¨ç¤º
+	// ŽóMŒ³î•ñ‚Ì•\Ž¦
 	String msg;
 	msg = L"source IP:" + AContext->Connection->Socket->Binding->PeerIP;
 	LMessage->Items->Add(msg);
 	msg = L"\r\nsource port:" + IntToStr(AContext->Connection->Socket->Binding->PeerPort);
 	LMessage->Items->Add(msg);
-	LMessage->Items->Add(rcvdStr);  // å—ä¿¡æ¸ˆã®[rcvdStr]ã‚’ä½¿ç”¨
+	LMessage->Items->Add(rcvdStr);  // ŽóMÏ‚Ì[rcvdStr]‚ðŽg—p
 
 
 	threads = ChatServer->Contexts->LockList();
@@ -80,14 +80,16 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 
 
 			for (int i = 0; i < StringGrid1->RowCount; i++) {
-				if (IntToStr(AContext->Connection->Socket->Binding->PeerPort) != StringGrid1->Cells[5][i]) {
+				if (AContext->Connection->Socket->Binding->PeerPort != StringGrid1->Cells[5][i]) {
 					StringGrid1->RowCount += 1;
 					StringGrid1->Cells[5][StringGrid1->RowCount] = AContext->Connection->Socket->Binding->PeerPort;
-                    break;
 				}
 
 			}
+
+
 		}
+
 	}
 
 	ChatServer->Contexts->UnlockList();
