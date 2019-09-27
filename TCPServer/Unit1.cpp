@@ -91,7 +91,7 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 
 				if (i==StringGrid1->RowCount-1) {
 					StringGrid1->RowCount += 1;
-					StringGrid1->Cells[5][StringGrid1->RowCount] = AContext->Connection->Socket->Binding->PeerPort;
+					StringGrid1->Cells[5][StringGrid1->RowCount-1] = AContext->Connection->Socket->Binding->PeerPort;
 				}
 
 			}
