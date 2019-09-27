@@ -18,7 +18,7 @@
 //---------------------------------------------------------------------------
 class TTCP_Server : public TForm
 {
-__published:	// IDE ‚ÅŠÇ—‚³‚ê‚éƒRƒ“ƒ|[ƒlƒ“ƒg
+__published:	// IDE ã§ç®¡ç†ã•ã‚Œã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 	TListBox *LMessage;
 	TEdit *EMassage;
 	TButton *ESend;
@@ -29,8 +29,8 @@ __published:	// IDE ‚ÅŠÇ—‚³‚ê‚éƒRƒ“ƒ|[ƒlƒ“ƒg
 	TStringGrid *StringGrid1;
 	void __fastcall ESendClick(TObject *Sender);
 	void __fastcall ChatServerExcute(TIdContext *AContext);
-private:	// ƒ†[ƒU[éŒ¾
-public:		// ƒ†[ƒU[éŒ¾
+private:	// ãƒ¦ãƒ¼ã‚¶ãƒ¼å®£è¨€
+public:		// ãƒ¦ãƒ¼ã‚¶ãƒ¼å®£è¨€
 	__fastcall TTCP_Server(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

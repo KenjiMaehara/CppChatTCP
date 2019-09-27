@@ -13,18 +13,34 @@ __fastcall TTCP_Server::TTCP_Server(TComponent* Owner)
 	: TForm(Owner)
 {
 
+	ChatServer->Active = False;
+	StringGrid1->Cells[0][0]="No";
+	StringGrid1->Cells[1][0]="端末名称";
+	StringGrid1->Cells[2][0]="端末アドレス";
+	StringGrid1->Cells[3][0]="MAC";
+	StringGrid1->Cells[4][0]="IPアドレス";
+	StringGrid1->Cells[5][0]="接続元ポート番号";
+
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TTCP_Server::ESendClick(TObject *Sender)
 {
+	if (ChatServer->Active == False) {
 
-	ChatClient->Host = EHost->Text;
-	ChatClient->Connect();
+		ChatServer->DefaultPort = StrToInt(EPort->Text);
+		TCP_Server->Caption = "TCP_Serve（接続中）";
+		ChatServer->Active = True;
+		ESend->Caption = "停止";
 
-	ChatClient->Socket->Write(EMassage->Text.Length());
-	ChatClient->Socket->Write(EMassage->Text);
-	//ChatClient->Disconnect();
+	} else {
+
+		ChatServer->Active = false;
+		TCP_Server->Caption = "TCP_Serve";
+		ESend->Caption = "開始";
+
+	}
+
 
 
 
@@ -33,15 +49,11 @@ void __fastcall TTCP_Server::ESendClick(TObject *Sender)
 
 void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 {
-	//int length = AContext->Connection->Socket->ReadLongInt();
-	//UnicodeString Message = AContext->Connection->Socket->ReadString(length);
-	//AContext->Connection->Disconnect();
-	//LMessage->Items->Add(Message);
+
 
 	AnsiString rcvdStr;
 
-	//
-	//rcvdStr = L"";
+
 	rcvdStr = AContext->Connection->IOHandler->ReadLn(IndyTextEncoding(932));
 
 	TList *threads;
@@ -56,7 +68,6 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 	LMessage->Items->Add(msg);
 	LMessage->Items->Add(rcvdStr);  // 受信済の[rcvdStr]を使用
 
-	//AContext->Connection->IOHandler->WriteLn(rcvdStr);
 
 	threads = ChatServer->Contexts->LockList();
 
@@ -65,20 +76,35 @@ void __fastcall TTCP_Server::ChatServerExcute(TIdContext *AContext)
 
 		if (AContext->Connection->Socket->Binding->PeerPort == ac->Connection->Socket->Binding->PeerPort) {
 			ac->Connection->IOHandler->WriteLn(rcvdStr);
+			LMessage->Items->Add(threads->Count);
+
+
+			for (int i = 0; i < StringGrid1->RowCount; i++) {
+
+				AnsiString test;
+				test = IntToStr(AContext->Connection->Socket->Binding->PeerPort);
+
+				if (test == StringGrid1->Cells[5][i]) {
+					break;
+				}
+
+
+				if (i==StringGrid1->RowCount-1) {
+					StringGrid1->RowCount += 1;
+					StringGrid1->Cells[0][StringGrid1->RowCount-1] = StringGrid1->RowCount-1;
+					StringGrid1->Cells[5][StringGrid1->RowCount-1] = AContext->Connection->Socket->Binding->PeerPort;
+					StringGrid1->Cells[4][StringGrid1->RowCount-1] = AContext->Connection->Socket->Binding->PeerIP;
+				}
+
+			}
 		}
-
-		//ac->Connection->IOHandler->WriteLn(rcvdStr);
-
-		// 受信文字列はすでにrcvdStrにて取得しているため、下記の受信処理は過剰で処理が止まります
-        //int length = ac->Connection->Socket->ReadLongInt();
-        //UnicodeString Message = ac->Connection->Socket->ReadString(length);
-        //LMessage->Items->Add(Message);
-		//LMessage->Items->Add(rcvdStr);  // 受信済の[rcvdStr]を使用
 	}
 
 	ChatServer->Contexts->UnlockList();
 
 }
 //---------------------------------------------------------------------------
+
+
 
 

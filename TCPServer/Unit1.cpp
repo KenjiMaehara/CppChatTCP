@@ -29,7 +29,7 @@ void __fastcall TTCP_Server::ESendClick(TObject *Sender)
 	if (ChatServer->Active == False) {
 
 		ChatServer->DefaultPort = StrToInt(EPort->Text);
-		TCP_Server->Caption = "TCP_Serve（接続中）";
+		TCP_Server->Caption = "TCP_Server（接続中）";
 		ChatServer->Active = True;
 		ESend->Caption = "停止";
 
