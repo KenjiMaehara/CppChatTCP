@@ -1,4 +1,3 @@
-
 *.json
 *.json
 *.local
@@ -11,3 +10,6 @@
 *.map
 *.pdi
 *.pch
+/TCPClient/__astcache
+/TCPClient/__history
+/TCPClient/__recovery

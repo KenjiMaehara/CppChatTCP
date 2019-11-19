@@ -2,8 +2,8 @@ object TCP_Client: TTCP_Client
   Left = 0
   Top = 0
   Caption = 'TCP_Client'
-  ClientHeight = 299
-  ClientWidth = 635
+  ClientHeight = 317
+  ClientWidth = 639
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

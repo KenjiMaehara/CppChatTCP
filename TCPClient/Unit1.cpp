@@ -69,9 +69,11 @@ void __fastcall TTCP_Client::EConnectClick(TObject *Sender)
 		EConnect->Enabled = false;
 		ESend->Enabled = true;
 		EConnect->Caption = "ê⁄ë±íÜ";
+
 	}
 
 
 }
 //---------------------------------------------------------------------------
+
 
