@@ -13,3 +13,11 @@
 /TCPClient/__astcache
 /TCPClient/__history
 /TCPClient/__recovery
+
+/TCPServer/__astcache
+/TCPServer/__history
+/TCPServer/__recovery
+
+/TCPServerTest/__astcache
+/TCPServerTest/__history
+/TCPServerTest/__recovery
