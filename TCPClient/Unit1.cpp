@@ -3,6 +3,10 @@
 #include <vcl.h>
 #pragma hdrstop
 
+#include <iostream>
+#include <string>
+#include <fstream>
+
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -76,4 +80,33 @@ void __fastcall TTCP_Client::EConnectClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+using namespace std;
+
+void __fastcall TTCP_Client::FormCreate(TObject *Sender)
+{
+
+	#if 0
+	if(FileExists("c:/SaveFile.xml"))
+		ADODataSet1->LoadFromFile("c:/SaveFile.xml");
+	else
+		StatusBar1->Panels->Items[0]->Text = "Save file does not exist!";
+	#endif
+
+	AnsiString filename = "c:/SaveFile.txt";
+
+	//filename += ".csv";
+
+	ifstream fin;
+	fin.open(filename.c_str(), ios::in);
+
+	if( !(fin.fail()) )
+	{
+		string line;
+		getline(fin, line);
+        AnsiString str(line.c_str());
+        ShowMessage(str);
+	}
+
+}
+//---------------------------------------------------------------------------
 

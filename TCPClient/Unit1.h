@@ -14,6 +14,9 @@
 #include <IdTCPConnection.hpp>
 #include <IdTCPServer.hpp>
 #include <IdContext.hpp>
+#include <Data.DB.hpp>
+#include <Data.Win.ADODB.hpp>
+#include <Vcl.ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TTCP_Client : public TForm
 {
@@ -27,8 +30,13 @@ __published:	// IDE で管理されるコンポーネント
 	TEdit *EPort;
 	TLabel *Label2;
 	TButton *EConnect;
+	TEdit *Edit1;
+	TLabel *Label3;
+	TADODataSet *ADODataSet1;
+	TStatusBar *StatusBar1;
 	void __fastcall ESendClick(TObject *Sender);
 	void __fastcall EConnectClick(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
 	//void __fastcall ChatServerExcute(TIdContext *AContext);
 private:	// ユーザー宣言
 public:		// ユーザー宣言
