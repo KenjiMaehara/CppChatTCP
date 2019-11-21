@@ -93,14 +93,26 @@ void __fastcall TTCP_Client::FormCreate(TObject *Sender)
 	if( !(fin.fail()) )
 	{
 		string line;
-		getline(fin, line);
-        AnsiString str(line.c_str());
+		string line02;
+
+		while(getline(fin,line))
+		{
+			//cout << "[" << line << "]" << endl;
+			//line02 << "[" << line << "]" << endl;
+			line = "[" + line;
+			line = line + "]\r\n";
+			line02 = line02 + line;
+
+
+		}
+
+		AnsiString str(line02.c_str());
 		ShowMessage(str);
 	}
 	else
 	{
 		StatusBar1->Panels->Items[0]->Text = "Save file does not exist!";
-    }
+	}
 
 }
 //---------------------------------------------------------------------------
