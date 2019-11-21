@@ -32,7 +32,6 @@ __published:	// IDE で管理されるコンポーネント
 	TButton *EConnect;
 	TEdit *Edit1;
 	TLabel *Label3;
-	TADODataSet *ADODataSet1;
 	TStatusBar *StatusBar1;
 	void __fastcall ESendClick(TObject *Sender);
 	void __fastcall EConnectClick(TObject *Sender);

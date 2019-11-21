@@ -106,9 +106,4 @@ object TCP_Client: TTCP_Client
     Left = 408
     Top = 24
   end
-  object ADODataSet1: TADODataSet
-    Parameters = <>
-    Left = 496
-    Top = 24
-  end
 end

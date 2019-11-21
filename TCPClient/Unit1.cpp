@@ -85,16 +85,7 @@ using namespace std;
 void __fastcall TTCP_Client::FormCreate(TObject *Sender)
 {
 
-	#if 0
-	if(FileExists("c:/SaveFile.xml"))
-		ADODataSet1->LoadFromFile("c:/SaveFile.xml");
-	else
-		StatusBar1->Panels->Items[0]->Text = "Save file does not exist!";
-	#endif
-
-	AnsiString filename = "c:/SaveFile.txt";
-
-	//filename += ".csv";
+	AnsiString filename = "SaveFile.txt";
 
 	ifstream fin;
 	fin.open(filename.c_str(), ios::in);
@@ -104,8 +95,12 @@ void __fastcall TTCP_Client::FormCreate(TObject *Sender)
 		string line;
 		getline(fin, line);
         AnsiString str(line.c_str());
-        ShowMessage(str);
+		ShowMessage(str);
 	}
+	else
+	{
+		StatusBar1->Panels->Items[0]->Text = "Save file does not exist!";
+    }
 
 }
 //---------------------------------------------------------------------------
