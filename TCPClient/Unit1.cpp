@@ -103,6 +103,19 @@ void __fastcall TTCP_Client::FormCreate(TObject *Sender)
 			line = line + "]\r\n";
 			line02 = line02 + line;
 
+			int number = line.find("id:");
+			int number02 = line.find("]");
+
+			if(number != string::npos)
+			{
+				string line03 = line.substr(number+3,number02-(number+3));
+
+				AnsiString str02(line03.c_str());
+				Edit1->Text = str02;
+
+			}
+
+
 
 		}
 
