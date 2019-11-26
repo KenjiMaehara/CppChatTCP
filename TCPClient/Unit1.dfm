@@ -98,6 +98,7 @@ object TCP_Client: TTCP_Client
     Height = 19
     Panels = <
       item
+        Text = 'test'
         Width = 50
       end>
   end

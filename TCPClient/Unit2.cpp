@@ -33,28 +33,11 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 	if( !(fin.fail()) )
 	{
 		string line;
-		string line02;
 
 		while(getline(fin,line))
 		{
-
-			line = "[" + line;
-			line = line + "]\r\n";
-			line02 = line02 + line;
-
-			int number = line.find("id:");
-			int number02 = line.find("]");
-
-			if(number != string::npos)
-			{
-				string line03 = line.substr(number+3,number02-(number+3));
-
-				AnsiString str02(line03.c_str());
-				//Edit1->Text = str02;
-
-			}
-
-
+			if(line.find("BKUK") != string::npos)
+				v.push_back(line);
 
 		}
 	}
@@ -64,4 +47,5 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
+
 
