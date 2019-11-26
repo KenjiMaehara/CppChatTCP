@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 
 #include "Unit1.h"
 //---------------------------------------------------------------------------
@@ -125,8 +126,10 @@ void __fastcall TTCP_Client::FormCreate(TObject *Sender)
 	else
 	{
 		StatusBar1->Panels->Items[0]->Text = "Save file does not exist!";
+		//StatusBar1->Panels[0]-> = "Save file does not exist!";
 	}
 
 }
 //---------------------------------------------------------------------------
+
 

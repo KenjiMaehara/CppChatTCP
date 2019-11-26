@@ -96,7 +96,10 @@ object TCP_Client: TTCP_Client
     Top = 343
     Width = 639
     Height = 19
-    Panels = <>
+    Panels = <
+      item
+        Width = 50
+      end>
   end
   object ChatClient: TIdTCPClient
     ConnectTimeout = 0
