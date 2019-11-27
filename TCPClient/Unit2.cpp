@@ -32,7 +32,7 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 void __fastcall TForm2::testButtonClick(TObject *Sender)
 {
 	//vector<string> v[6];
-	vector<vector<string> > v(6, vector<string>(5));
+	vector<vector<string> > v(1, vector<string>(5));
 
 	vector<vector<string> > reciveData(1, vector<string>(5));
 	//vector<string> reciveData;
@@ -80,14 +80,12 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 				{
 					if(v.at(i).at(1) != reciveData.at(0).at(1) && i == v.size()-1)
 					{
-						int num = v.size() + 1;
 						v.resize( v.size() + 1);
-						v.at(v.size()).resize(6);
-						int k=0;
+						v.at(v.size()-1).resize(6);
 
-						for(int i=0; i<v.at(v.size()).size()-1 ; i++)
+						for(int i=0; i < 5 ; i++)
 						{
-							v.at(num).at(i) = reciveData.at(0).at(i);
+							v.at(v.size()-1).at(i) = reciveData.at(0).at(i);
 						}
 					}
 					else
