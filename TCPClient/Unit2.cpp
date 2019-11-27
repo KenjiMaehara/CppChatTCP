@@ -31,15 +31,11 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm2::testButtonClick(TObject *Sender)
 {
-	vector<string> v = {
-					{7, 4, 0, 8},
-					{2, 0, 3, 5},
-					{6, 1, 7, 0},
-					{7, 4, 0, 8},
-					{2, 0, 3, 5},
-					{6, 1, 7, 0},
-				};
-	vector<string> reciveData;
+	//vector<string> v[6];
+	vector<vector<string> > v(6, vector<string>(5));
+
+	vector<vector<string> > reciveData(1, vector<string>(5));
+	//vector<string> reciveData;
 	AnsiString filename = "testFile.txt";
 
 	string buf;
@@ -48,7 +44,16 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 	fin.open(filename.c_str(), ios::in);
 
 
-	v[4].push_back("test");
+	//v.resize(5);
+	//v[5][0]="test";
+	//v[5].push_back("test02");
+	//v[5][2]="test03";
+	//v[5].push_back("test02");
+	//v.at(5).at(0) = "test02";
+	//v.at(5).push_back("test02");
+
+
+
 
 
 
@@ -60,28 +65,32 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 		{
 			stringstream ss{line};
 
+			int j=0;
 
 			while (std::getline(ss, buf, ','))
 			{
-				reciveData.push_back(buf);
+				reciveData.at(0).at(j++) = buf;
 			}
 
 
 			//if(line.find("BKUK") != string::npos)
-			if(reciveData.at(0) == "BKUK")
+			if(reciveData.at(0).at(0) == "BKUK")
 			{
 				for(int i=0;i<v.size();i++)
 				{
-					if(reciveData.at(i).at(1) != reciveData.at(0).at(1))
+					if(v.at(i).at(1) != reciveData.at(0).at(1) && i == v.size())
 					{
 						int num = v.size() + 1;
-						int j=0;
 
 						while(getline(ss, buf, ','))
 						{
-							//v.at(num).push_back(buf);
+							v.at(num).push_back(buf);
 						}
 					}
+					else
+					{
+
+                    }
 				}
 			}
 		}
