@@ -10,7 +10,14 @@
 #include <fstream>
 #include <vector>
 
+#include <sstream>
+#include <istream>
+
+
+
 using namespace std;
+
+int vectorStringFinder(vector<string> vec, string number);
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -25,10 +32,18 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 void __fastcall TForm2::testButtonClick(TObject *Sender)
 {
 	vector<string> v;
+	vector<string> reciveData;
 	AnsiString filename = "testFile.txt";
+
+	string buf;
 
 	ifstream fin;
 	fin.open(filename.c_str(), ios::in);
+
+
+	v[5].push_back("test");
+
+
 
 	if( !(fin.fail()) )
 	{
@@ -36,9 +51,32 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 
 		while(getline(fin,line))
 		{
-			if(line.find("BKUK") != string::npos)
-				v.push_back(line);
+			stringstream ss{line};
 
+
+			while (std::getline(ss, buf, ','))
+			{
+				reciveData.push_back(buf);
+			}
+
+
+			//if(line.find("BKUK") != string::npos)
+			if(reciveData.at(0) == "BKUK")
+			{
+				for(int i=0;i<v.size();i++)
+				{
+					if(reciveData.at(i).at(1) != reciveData.at(0).at(1))
+					{
+						int num = v.size() + 1;
+						int j=0;
+
+						while(getline(ss, buf, ','))
+						{
+							//v.at(num).push_back(buf);
+						}
+					}
+				}
+			}
 		}
 	}
 	else
@@ -48,4 +86,18 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+int vectorStringFinder(vector<string> vec, string number)
+{
+	auto itr = find(vec.begin(), vec.end(), number);
+	size_t index = distance( vec.begin(), itr );
+	if (index != vec.size())
+	{ // ”­Œ©‚Å‚«‚½‚Æ‚«
+		return 1;
+	}
+	else
+	{ // ”­Œ©‚Å‚«‚È‚©‚Á‚½‚Æ‚«
+		return 0;
+	}
+}
 
