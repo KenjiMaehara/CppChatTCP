@@ -31,7 +31,14 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm2::testButtonClick(TObject *Sender)
 {
-	vector<string> v;
+	vector<string> v = {
+					{7, 4, 0, 8},
+					{2, 0, 3, 5},
+					{6, 1, 7, 0},
+					{7, 4, 0, 8},
+					{2, 0, 3, 5},
+					{6, 1, 7, 0},
+				};
 	vector<string> reciveData;
 	AnsiString filename = "testFile.txt";
 
@@ -41,7 +48,7 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 	fin.open(filename.c_str(), ios::in);
 
 
-	v[5].push_back("test");
+	v[4].push_back("test");
 
 
 
