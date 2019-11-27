@@ -78,13 +78,16 @@ void __fastcall TForm2::testButtonClick(TObject *Sender)
 			{
 				for(int i=0;i<v.size();i++)
 				{
-					if(v.at(i).at(1) != reciveData.at(0).at(1) && i == v.size())
+					if(v.at(i).at(1) != reciveData.at(0).at(1) && i == v.size()-1)
 					{
 						int num = v.size() + 1;
+						v.resize( v.size() + 1);
+						v.at(v.size()).resize(6);
+						int k=0;
 
-						while(getline(ss, buf, ','))
+						for(int i=0; i<v.at(v.size()).size()-1 ; i++)
 						{
-							v.at(num).push_back(buf);
+							v.at(num).at(i) = reciveData.at(0).at(i);
 						}
 					}
 					else
